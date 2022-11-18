@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Usuarios" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="Presentacion.Usuarios" %>
+﻿<%@ Page Title="Usuarios" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeFile="Usuarios.aspx.cs" Inherits="Presentacion.Usuarios" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container px-4">
