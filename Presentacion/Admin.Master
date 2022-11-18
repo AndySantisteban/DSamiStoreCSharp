@@ -1,0 +1,100 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="Presentacion.Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>DSamiStore</title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href="~/Content/Admin.css" rel="stylesheet">
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="admin">
+        <div class="admin-sidebar">
+            <a class="d-flex text-decoration-none px-4 py-3" href="#">
+                <span class="fs-4 fw-bold text-primary">D' Sami Store</span>
+            </a>
+
+            <ul class="nav nav-pills flex-column mx-2 mb-auto">
+                <li class="nav-item">
+                    <a runat="server" href="~/roles" class="nav-link">
+                        <i class="me-4 fa-xl fa-fw fa-solid fa-shield-halved"></i>
+                        <span>Roles</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a runat="server" href="~/usuarios" class="nav-link">
+                        <i class="me-4 fa-xl fa-fw fa-solid fa-user"></i>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a runat="server" href="~/categorias" class="nav-link">
+                        <i class="me-4 fa-xl fa-fw fa-solid fa-tag"></i>
+                        <span>Categorias</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a runat="server" href="~/productos" class="nav-link">
+                        <i class="me-4 fa-xl fa-fw fa-solid fa-box"></i>
+                        <span>Productos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a runat="server" href="~/proveedores" class="nav-link">
+                        <i class="me-4 fa-xl fa-fw fa-solid fa-user-tag"></i>
+                        <span>Proveedores</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a runat="server" href="~/empleados" class="nav-link">
+                        <i class="me-4 fa-xl fa-fw fa-solid fa-users"></i>
+                        <span>Empleados</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="admin-content">
+            <nav class="admin-navbar navbar">
+                <div class="container-fluid">
+                    <div></div>
+                    <div class="btn-group">
+                        <p class="d-flex align-items-center h-100 mt-2 my-2 mx-2">admin</p>
+                        <div class="rounded-circle overflow-hidden" style="width: 42px; height: 42px; cursor: pointer"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://www.pngkey.com/png/full/72-729716_user-avatar-png-graphic-free-download-icon.png"
+                                class="w-100 h-100" />
+                        </div>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container body-content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+                <hr />
+                <footer>
+                    <p>&copy; <%: DateTime.Now.Year %> - DsamiStore</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $(`.nav-link[href="${location.pathname.substring(1, location.pathname.length)}"]`).addClass('active');
+        });
+    </script>
+</body>
+</html>
