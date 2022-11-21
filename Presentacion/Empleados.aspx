@@ -53,7 +53,7 @@
                               <select class="form-select" id="agregar-idTipoDocumento" name="idTipoDocumento" aria-label=".form-select-sm example">
                                   <option selected>Seleccionar Tipo de documento</option>
                                   <c:forEach var="documento" items="${documentos}">
-                                      <option value="${documento.getId()}">${documento.getNombre()}</option>
+                                      <option value="DNI"</option>
                                   </c:forEach>
                               </select>
                           </div>
@@ -75,7 +75,7 @@
                               <select class="form-select" id="agregar-idPais" accion="idPais" name="idPais" aria-label=".form-select-sm example">
                                   <option selected>Seleccionar Pais</option>
                                   <c:forEach var="pais" items="${paises}">
-                                      <option value="${pais.getId()}">${pais.getNombre()}</option>
+                                      <option value="PERU">Perú</option>
                                   </c:forEach>
                               </select>
                           </div>
@@ -83,21 +83,22 @@
                           <div>
                               <label  for="agregar-idRegion" class="col-form-label">Region</label>
                               <select class="form-select" id="agregar-idRegion" accion="idRegion" name="idRegion" aria-label=".form-select-sm example">
-                                  <option selected>Seleccionar Region</option>
+                                  <option selected>Lambayeque</option>
+                                   
                               </select>                                                                                                    
                           </div>
 
                           <div>
                               <label for="agregar-idProvincia" class="col-form-label">Provincia</label>
                               <select class="form-select" id="agregar-idProvincia" accion="idProvincia" name="idProvincia" aria-label=".form-select-sm example">
-                                  <option selected>Seleccionar Provincia</option>
+                                  <option selected>Lambayeque</option>
                               </select>
                           </div>
 
                           <div>
                               <label for="agregar-idDistrito" class="col-form-label">Distrito</label>
                               <select class="form-select" id="agregar-idDistrito" accion="idDistrito" name="idDistrito" aria-label=".form-select-sm example">
-                                  <option selected>Seleccionar Distritos</option>
+                                  <option selected>Pimentel</option>
                               </select>
                           </div>
 
@@ -492,6 +493,548 @@
                           <!---fin ventana eliminar--->
                       </td>
                   </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>Andy</td>
+                          <td>Santisteban</td>
+                          <td>Ostos</td>
+                          <td>DNI</td>
+                          <td>71985693</td>
+                          <td>Perú</td>
+                          <td>Lambayeque</td>
+                          <td>Pimentel</td>
+                          <td>Mz. G. Lt. 9 Urb. La Plata</td>
+                          <td>
+                          <div class="d-flex justify-content-center">
+                              <button class="btn btn-secondary me-2" type="button" data-bs-toggle="modal" data-bs-target="#editarProveedor">Editar</button>
+
+                              <!--ventana para Editar--->
+                              <div class="modal fade modal-lg" id="editarProveedor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="editaCat">
+                                  <div class="modal-dialog modal-dialog-centered">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <h5 class="modal-title" id="staticBackdropLabel">Editar empleado</h5>
+                                              <button type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          </div>
+
+                                          <form name="form-data" action="empleados" method="POST">
+                                              <input type="hidden" name="idProveedor" value="${empleado.getCodigoEmpleado()}">
+
+                                              <div class="modal-body row" id="cont_modal">
+                                                  <div class="form-group col-md-6">
+                                                      <div>
+                                                          <label for="editar-nombre" class="col-form-label">Nombre</label>
+                                                          <input type="text" class="form-control" id="editar-nombre" name="nombre" placeholder="Editar nombre" value="Juan" required="true">
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-apellidoPaterno" class="col-form-label">Apellido Paterno</label>
+                                                          <input type="text" class="form-control" id="editar-apellidoPaterno" name="editarApellidoPaterno" value="Carlos" placeholder="Editar apellidoPaterno" required>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-apellidoMaterno" class="col-form-label">Apellido Materno</label>
+                                                          <input type="text" class="form-control" id="editar-apellidoMaterno" name="editarApellidoMaterno" value="Manrique" placeholder="Editar apellidoMaterno" required>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-idTipoDocumento" class="col-form-label">Tipo de documento</label>
+                                                          <select class="form-select" id="editar-idTipoDocumento" name="idTipoDocumento" value="DNI" aria-label=".form-select-sm example">
+                                                              <c:forEach var="documento" items="${documentos}">
+                                                                  <option ${empleado.getDocumento().getId().equals(documento.getId()) ? "selected" : ""} value="1">DNI</option>
+                                                              </c:forEach>
+                                                          </select>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-numDocumento" class="col-form-label">N de documento</label>
+                                                          <input type="text" class="form-control" id="editar-numDocumento" value="17283954" name="editarNumDocumento" placeholder="Editar numDocumento" required>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-fechaNac" class="col-form-label">Fecha de nacimiento</label>
+                                                          <input type="date" class="form-control" id="editar-fechaNac" name="editarFechaNac" value="24/02/1989" >
+                                                      </div>
+                                                  </div>
+
+                                                  <div class="form-group col-md-6">
+                                                      <div>
+                                                          <label for="editar-idPais" class="col-form-label">Pais</label>
+                                                          <select class="form-select" id="editar-idPais-${empleado.getCodigoEmpleado()}" accion="idPais" name="idPais" value="Perú" aria-label=".form-select-sm example">
+                                                              <option>Cargando...</option>
+                                                          </select>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-idRegion" class="col-form-label">Region</label>
+                                                          <select class="form-select" id="editar-idRegion-${empleado.getCodigoEmpleado()}" accion="idRegion" name="idRegion"value="Lambayeque" aria-label=".form-select-sm example">
+                                                              <option>Cargando...</option>
+                                                          </select>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-idProvincia" class="col-form-label">Provincia</label>
+                                                          <select class="form-select" id="editar-idProvincia-${empleado.getCodigoEmpleado()}" accion="idProvincia" name="idProvincia"value="Lambayeque" aria-label=".form-select-sm example">
+                                                              <option>Cargando...</option>
+                                                          </select>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-idDistrito" class="col-form-label">Distrito</label>
+                                                          <select class="form-select" id="editar-idDistrito-${empleado.getCodigoEmpleado()}" accion="idDistrito" name="idDistrito" value="Olmos" aria-label=".form-select-sm example">
+                                                              <option>Cargando...</option>
+                                                          </select>
+                                                      </div>
+                                                      <script>
+                                                          (() => {
+                                                              const editarModalEl = document.getElementById('editarProvee${empleado.getCodigoEmpleado()}');
+                                                              const paisSelectEl = document.getElementById("editar-idPais-${empleado.getCodigoEmpleado()}");
+                                                              const regionSelectEl = document.getElementById("editar-idRegion-${empleado.getCodigoEmpleado()}");
+                                                              const provinciaSelectEl = document.getElementById("editar-idProvincia-${empleado.getCodigoEmpleado()}");
+                                                              const distritoSelectEl = document.getElementById("editar-idDistrito-${empleado.getCodigoEmpleado()}");
+                                                              const editarModal = new bootstrap.Modal(editarModalEl);
+                                                              paisSelectEl.disabled = true;
+                                                              regionSelectEl.disabled = true;
+                                                              provinciaSelectEl.disabled = true;
+                                                              distritoSelectEl.disabled = true;
+                                                              editarModalEl.addEventListener('shown.bs.modal', async () => {
+                                                                  const paisIdSeleccionada = "${empleado.getPais().getId()}";
+                                                                  const regionIdSeleccionada = "${empleado.getRegion().getId()}";
+                                                                  const provinciaIdSeleccionada = "${empleado.getProvincia().getId()}";
+                                                                  const distritoIdSeleccionada = "${empleado.getDistrito().getId()}";
+                                                                  let paisesHTML = "";
+                                                                  let regionesHTML = "";
+                                                                  let provinciasHTML = "";
+                                                                  let distritosHTML = "";
+                                                                  paisesHTML += "<option>Seleccionar Pais</option>";
+                                                                  regionesHTML += "<option>Seleccionar Region</option>";
+                                                                  provinciasHTML += "<option>Seleccionar Provincia</option>";
+                                                                  distritosHTML += "<option>Seleccionar Distrito</option>";
+                                                                  const paises = await obtenerPaises();
+                                                                  for (const pais of paises) {
+                                                                      paisesHTML += "<option " + (pais.id === paisIdSeleccionada ? "selected" : "") + " value='" + pais.id + "'>" + pais.nombre + "</option>";
+                                                                  }
+                                                                  const regiones = await obtenerRegiones(paisIdSeleccionada);
+                                                                  for (const region of regiones) {
+                                                                      regionesHTML += "<option " + (region.id === regionIdSeleccionada ? "selected" : "") + " value='" + region.id + "'>" + region.nombre + "</option>";
+                                                                  }
+                                                                  const provincias = await obtenerProvincias(regionIdSeleccionada);
+                                                                  for (const provincia of provincias) {
+                                                                      provinciasHTML += "<option " + (provincia.id === provinciaIdSeleccionada ? "selected" : "") + " value='" + provincia.id + "'>" + provincia.nombre + "</option>";
+                                                                  }
+                                                                  const distritos = await obtenerDistritos(provinciaIdSeleccionada);
+                                                                  for (const distrito of distritos) {
+                                                                      distritosHTML += "<option " + (distrito.id === distritoIdSeleccionada ? "selected" : "") + " value='" + distrito.id + "'>" + distrito.nombre + "</option>";
+                                                                  }
+                                                                  paisSelectEl.innerHTML = paisesHTML;
+                                                                  regionSelectEl.innerHTML = regionesHTML;
+                                                                  provinciaSelectEl.innerHTML = provinciasHTML;
+                                                                  distritoSelectEl.innerHTML = distritosHTML;
+                                                                  paisSelectEl.disabled = false;
+                                                                  regionSelectEl.disabled = false;
+                                                                  provinciaSelectEl.disabled = false;
+                                                                  distritoSelectEl.disabled = false;
+                                                              });
+                                                              async function obtenerPaises() {
+                                                                  const res = await fetch("proveedores?accion=paises");
+                                                                  const paises = await res.json();
+                                                                  return paises;
+                                                              }
+                                                              async function obtenerRegiones(paisId) {
+                                                                  const res = await fetch("proveedores?accion=regiones&paisId=" + paisId);
+                                                                  const regiones = await res.json();
+                                                                  return regiones;
+                                                              }
+                                                              async function obtenerProvincias(regionId) {
+                                                                  const res = await fetch("proveedores?accion=provincias&regionId=" + regionId);
+                                                                  const provincias = await res.json();
+                                                                  return provincias;
+                                                              }
+                                                              async function obtenerDistritos(provinciaId) {
+                                                                  const res = await fetch("proveedores?accion=distritos&provinciaId=" + provinciaId);
+                                                                  const distritos = await res.json();
+                                                                  return distritos;
+                                                              }
+                                                              paisSelectEl.addEventListener("change", async (event) => {
+                                                                  const paisId = event.target.value;
+                                                                  const regiones = await obtenerRegiones(paisId);
+                                                                  let regionesHTML = "";
+                                                                  let provinciasHTML = "";
+                                                                  let distritosHTML = "";
+                                                                  regionesHTML += "<option>Seleccionar Region</option>";
+                                                                  provinciasHTML += "<option>Seleccionar Provincia</option>";
+                                                                  distritosHTML += "<option>Seleccionar Distrito</option>";
+                                                                  for (const region of regiones) {
+                                                                      regionesHTML += "<option value='" + region.id + "'>" + region.nombre + "</option>";
+                                                                  }
+                                                                  if (regiones.length > 0) {
+                                                                      const regionId = regiones[0].id;
+                                                                      const provincias = await obtenerProvincias(regionId);
+                                                                      for (const provincia of provincias) {
+                                                                          provinciasHTML += "<option value='" + provincia.id + "'>" + provincia.nombre + "</option>";
+                                                                      }
+                                                                      if (provincias.length > 0) {
+                                                                          const provinciaId = provincias[0].id;
+                                                                          const distritos = await obtenerDistritos(provinciaId);
+                                                                          for (const distrito of distritos) {
+                                                                              distritosHTML += "<option value='" + distrito.id + "'>" + distrito.nombre + "</option>";
+                                                                          }
+                                                                      }
+                                                                  }
+                                                                  regionSelectEl.innerHTML = regionesHTML;
+                                                                  provinciaSelectEl.innerHTML = provinciasHTML;
+                                                                  distritoSelectEl.innerHTML = distritosHTML;
+                                                              });
+                                                              regionSelectEl.addEventListener("change", async (event) => {
+                                                                  const regionId = event.target.value;
+                                                                  const provincias = await obtenerProvincias(regionId);
+                                                                  let provinciasHTML = "";
+                                                                  let distritosHTML = "";
+                                                                  provinciasHTML += "<option>Seleccionar Provincia</option>";
+                                                                  distritosHTML += "<option>Seleccionar Distrito</option>";
+                                                                  for (const provincia of provincias) {
+                                                                      provinciasHTML += "<option value='" + provincia.id + "'>" + provincia.nombre + "</option>";
+                                                                  }
+                                                                  if (provincias.length > 0) {
+                                                                      const provinciaId = provincias[0].id;
+                                                                      const distritos = await obtenerDistritos(provinciaId);
+                                                                      for (const distrito of distritos) {
+                                                                          distritosHTML += "<option value='" + distrito.id + "'>" + distrito.nombre + "</option>";
+                                                                      }
+                                                                  }
+                                                                  provinciaSelectEl.innerHTML = provinciasHTML;
+                                                                  distritoSelectEl.innerHTML = distritosHTML;
+                                                              });
+                                                              provinciaSelectEl.addEventListener("change", async (event) => {
+                                                                  const provinciaId = event.target.value;
+                                                                  const distritos = await obtenerDistritos(provinciaId);
+                                                                  let distritosHTML = "";
+                                                                  distritosHTML += "<option>Seleccionar Distrito</option>";
+                                                                  for (const distrito of distritos) {
+                                                                      distritosHTML += "<option value='" + distrito.id + "'>" + distrito.nombre + "</option>";
+                                                                  }
+                                                                  distritoSelectEl.innerHTML = distritosHTML;
+                                                              });
+                                                          })();
+                                                      </script>
+
+                                                      <div>
+                                                          <label for="editar-Direccion" class="col-form-label">Direccion</label>
+                                                          <input type="text" class="form-control" id="editar-Direccion" name="editarrDireccion" value="Av. Las Palmas km. 12 #456" placeholder="Editar Direccion" required>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                  <input  type="submit" name="accion" value="editar" class="btn btn-primary" />
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </div>
+                              <!---fin ventana para Editar --->
+
+                              <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#eliminarProvee">Eliminar</button>
+
+                              <!-- Ventana modal para eliminar -->
+                              <div class="modal fade" id="eliminarProvee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                          <form name="form-data" action="empleados" method="POST">
+                                              <div class="modal-header">
+                                                  <h5 class="modal-title" id="myModalLabel">Deseas eliminar al empleado</h5>
+                                                  <button type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                                              </div>
+
+                                              <div class="modal-body">
+                                                  <input type="hidden" name="idProveedor" value="${empleado.getCodigoEmpleado()}">
+                                                  <strong style="text-align: center !important">Juan</strong>
+                                              </div>
+
+                                              <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                  <button type="submit" class="btn btn-primary btnBorrar btn-block" data-bs-dismiss="modal" id="${empleado.getCodigoEmpleado()}" name="accion" value="eliminar">Eliminar</button>
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!---fin ventana eliminar--->
+                      </td>
+                      </tr>
+                       <tr>
+                          <td>3</td>
+                          <td>Nicolette</td>
+                          <td>Pacheco</td>
+                          <td>Contreras</td>
+                          <td>DNI</td>
+                          <td>79846625</td>
+                          <td>Perú</td>
+                          <td>Lambayeque</td>
+                          <td>Lambayeque</td>
+                          <td>Urb. Los Pinos Mz.2 Lt.4</td>
+                          <td>
+                          <div class="d-flex justify-content-center">
+                              <button class="btn btn-secondary me-2" type="button" data-bs-toggle="modal" data-bs-target="#editarProveedor">Editar</button>
+
+                              <!--ventana para Editar--->
+                              <div class="modal fade modal-lg" id="editarProveedor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="editaCat">
+                                  <div class="modal-dialog modal-dialog-centered">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <h5 class="modal-title" id="staticBackdropLabel">Editar empleado</h5>
+                                              <button type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          </div>
+
+                                          <form name="form-data" action="empleados" method="POST">
+                                              <input type="hidden" name="idProveedor" value="${empleado.getCodigoEmpleado()}">
+
+                                              <div class="modal-body row" id="cont_modal">
+                                                  <div class="form-group col-md-6">
+                                                      <div>
+                                                          <label for="editar-nombre" class="col-form-label">Nombre</label>
+                                                          <input type="text" class="form-control" id="editar-nombre" name="nombre" placeholder="Editar nombre" value="Juan" required="true">
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-apellidoPaterno" class="col-form-label">Apellido Paterno</label>
+                                                          <input type="text" class="form-control" id="editar-apellidoPaterno" name="editarApellidoPaterno" value="Carlos" placeholder="Editar apellidoPaterno" required>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-apellidoMaterno" class="col-form-label">Apellido Materno</label>
+                                                          <input type="text" class="form-control" id="editar-apellidoMaterno" name="editarApellidoMaterno" value="Manrique" placeholder="Editar apellidoMaterno" required>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-idTipoDocumento" class="col-form-label">Tipo de documento</label>
+                                                          <select class="form-select" id="editar-idTipoDocumento" name="idTipoDocumento" value="DNI" aria-label=".form-select-sm example">
+                                                              <c:forEach var="documento" items="${documentos}">
+                                                                  <option ${empleado.getDocumento().getId().equals(documento.getId()) ? "selected" : ""} value="1">DNI</option>
+                                                              </c:forEach>
+                                                          </select>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-numDocumento" class="col-form-label">N de documento</label>
+                                                          <input type="text" class="form-control" id="editar-numDocumento" value="17283954" name="editarNumDocumento" placeholder="Editar numDocumento" required>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-fechaNac" class="col-form-label">Fecha de nacimiento</label>
+                                                          <input type="date" class="form-control" id="editar-fechaNac" name="editarFechaNac" value="24/02/1989" >
+                                                      </div>
+                                                  </div>
+
+                                                  <div class="form-group col-md-6">
+                                                      <div>
+                                                          <label for="editar-idPais" class="col-form-label">Pais</label>
+                                                          <select class="form-select" id="editar-idPais-${empleado.getCodigoEmpleado()}" accion="idPais" name="idPais" value="Perú" aria-label=".form-select-sm example">
+                                                              <option>Cargando...</option>
+                                                          </select>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-idRegion" class="col-form-label">Region</label>
+                                                          <select class="form-select" id="editar-idRegion-${empleado.getCodigoEmpleado()}" accion="idRegion" name="idRegion"value="Lambayeque" aria-label=".form-select-sm example">
+                                                              <option>Cargando...</option>
+                                                          </select>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-idProvincia" class="col-form-label">Provincia</label>
+                                                          <select class="form-select" id="editar-idProvincia-${empleado.getCodigoEmpleado()}" accion="idProvincia" name="idProvincia"value="Lambayeque" aria-label=".form-select-sm example">
+                                                              <option>Cargando...</option>
+                                                          </select>
+                                                      </div>
+
+                                                      <div>
+                                                          <label for="editar-idDistrito" class="col-form-label">Distrito</label>
+                                                          <select class="form-select" id="editar-idDistrito-${empleado.getCodigoEmpleado()}" accion="idDistrito" name="idDistrito" value="Olmos" aria-label=".form-select-sm example">
+                                                              <option>Cargando...</option>
+                                                          </select>
+                                                      </div>
+                                                      <script>
+                                                          (() => {
+                                                              const editarModalEl = document.getElementById('editarProvee${empleado.getCodigoEmpleado()}');
+                                                              const paisSelectEl = document.getElementById("editar-idPais-${empleado.getCodigoEmpleado()}");
+                                                              const regionSelectEl = document.getElementById("editar-idRegion-${empleado.getCodigoEmpleado()}");
+                                                              const provinciaSelectEl = document.getElementById("editar-idProvincia-${empleado.getCodigoEmpleado()}");
+                                                              const distritoSelectEl = document.getElementById("editar-idDistrito-${empleado.getCodigoEmpleado()}");
+                                                              const editarModal = new bootstrap.Modal(editarModalEl);
+                                                              paisSelectEl.disabled = true;
+                                                              regionSelectEl.disabled = true;
+                                                              provinciaSelectEl.disabled = true;
+                                                              distritoSelectEl.disabled = true;
+                                                              editarModalEl.addEventListener('shown.bs.modal', async () => {
+                                                                  const paisIdSeleccionada = "${empleado.getPais().getId()}";
+                                                                  const regionIdSeleccionada = "${empleado.getRegion().getId()}";
+                                                                  const provinciaIdSeleccionada = "${empleado.getProvincia().getId()}";
+                                                                  const distritoIdSeleccionada = "${empleado.getDistrito().getId()}";
+                                                                  let paisesHTML = "";
+                                                                  let regionesHTML = "";
+                                                                  let provinciasHTML = "";
+                                                                  let distritosHTML = "";
+                                                                  paisesHTML += "<option>Seleccionar Pais</option>";
+                                                                  regionesHTML += "<option>Seleccionar Region</option>";
+                                                                  provinciasHTML += "<option>Seleccionar Provincia</option>";
+                                                                  distritosHTML += "<option>Seleccionar Distrito</option>";
+                                                                  const paises = await obtenerPaises();
+                                                                  for (const pais of paises) {
+                                                                      paisesHTML += "<option " + (pais.id === paisIdSeleccionada ? "selected" : "") + " value='" + pais.id + "'>" + pais.nombre + "</option>";
+                                                                  }
+                                                                  const regiones = await obtenerRegiones(paisIdSeleccionada);
+                                                                  for (const region of regiones) {
+                                                                      regionesHTML += "<option " + (region.id === regionIdSeleccionada ? "selected" : "") + " value='" + region.id + "'>" + region.nombre + "</option>";
+                                                                  }
+                                                                  const provincias = await obtenerProvincias(regionIdSeleccionada);
+                                                                  for (const provincia of provincias) {
+                                                                      provinciasHTML += "<option " + (provincia.id === provinciaIdSeleccionada ? "selected" : "") + " value='" + provincia.id + "'>" + provincia.nombre + "</option>";
+                                                                  }
+                                                                  const distritos = await obtenerDistritos(provinciaIdSeleccionada);
+                                                                  for (const distrito of distritos) {
+                                                                      distritosHTML += "<option " + (distrito.id === distritoIdSeleccionada ? "selected" : "") + " value='" + distrito.id + "'>" + distrito.nombre + "</option>";
+                                                                  }
+                                                                  paisSelectEl.innerHTML = paisesHTML;
+                                                                  regionSelectEl.innerHTML = regionesHTML;
+                                                                  provinciaSelectEl.innerHTML = provinciasHTML;
+                                                                  distritoSelectEl.innerHTML = distritosHTML;
+                                                                  paisSelectEl.disabled = false;
+                                                                  regionSelectEl.disabled = false;
+                                                                  provinciaSelectEl.disabled = false;
+                                                                  distritoSelectEl.disabled = false;
+                                                              });
+                                                              async function obtenerPaises() {
+                                                                  const res = await fetch("proveedores?accion=paises");
+                                                                  const paises = await res.json();
+                                                                  return paises;
+                                                              }
+                                                              async function obtenerRegiones(paisId) {
+                                                                  const res = await fetch("proveedores?accion=regiones&paisId=" + paisId);
+                                                                  const regiones = await res.json();
+                                                                  return regiones;
+                                                              }
+                                                              async function obtenerProvincias(regionId) {
+                                                                  const res = await fetch("proveedores?accion=provincias&regionId=" + regionId);
+                                                                  const provincias = await res.json();
+                                                                  return provincias;
+                                                              }
+                                                              async function obtenerDistritos(provinciaId) {
+                                                                  const res = await fetch("proveedores?accion=distritos&provinciaId=" + provinciaId);
+                                                                  const distritos = await res.json();
+                                                                  return distritos;
+                                                              }
+                                                              paisSelectEl.addEventListener("change", async (event) => {
+                                                                  const paisId = event.target.value;
+                                                                  const regiones = await obtenerRegiones(paisId);
+                                                                  let regionesHTML = "";
+                                                                  let provinciasHTML = "";
+                                                                  let distritosHTML = "";
+                                                                  regionesHTML += "<option>Seleccionar Region</option>";
+                                                                  provinciasHTML += "<option>Seleccionar Provincia</option>";
+                                                                  distritosHTML += "<option>Seleccionar Distrito</option>";
+                                                                  for (const region of regiones) {
+                                                                      regionesHTML += "<option value='" + region.id + "'>" + region.nombre + "</option>";
+                                                                  }
+                                                                  if (regiones.length > 0) {
+                                                                      const regionId = regiones[0].id;
+                                                                      const provincias = await obtenerProvincias(regionId);
+                                                                      for (const provincia of provincias) {
+                                                                          provinciasHTML += "<option value='" + provincia.id + "'>" + provincia.nombre + "</option>";
+                                                                      }
+                                                                      if (provincias.length > 0) {
+                                                                          const provinciaId = provincias[0].id;
+                                                                          const distritos = await obtenerDistritos(provinciaId);
+                                                                          for (const distrito of distritos) {
+                                                                              distritosHTML += "<option value='" + distrito.id + "'>" + distrito.nombre + "</option>";
+                                                                          }
+                                                                      }
+                                                                  }
+                                                                  regionSelectEl.innerHTML = regionesHTML;
+                                                                  provinciaSelectEl.innerHTML = provinciasHTML;
+                                                                  distritoSelectEl.innerHTML = distritosHTML;
+                                                              });
+                                                              regionSelectEl.addEventListener("change", async (event) => {
+                                                                  const regionId = event.target.value;
+                                                                  const provincias = await obtenerProvincias(regionId);
+                                                                  let provinciasHTML = "";
+                                                                  let distritosHTML = "";
+                                                                  provinciasHTML += "<option>Seleccionar Provincia</option>";
+                                                                  distritosHTML += "<option>Seleccionar Distrito</option>";
+                                                                  for (const provincia of provincias) {
+                                                                      provinciasHTML += "<option value='" + provincia.id + "'>" + provincia.nombre + "</option>";
+                                                                  }
+                                                                  if (provincias.length > 0) {
+                                                                      const provinciaId = provincias[0].id;
+                                                                      const distritos = await obtenerDistritos(provinciaId);
+                                                                      for (const distrito of distritos) {
+                                                                          distritosHTML += "<option value='" + distrito.id + "'>" + distrito.nombre + "</option>";
+                                                                      }
+                                                                  }
+                                                                  provinciaSelectEl.innerHTML = provinciasHTML;
+                                                                  distritoSelectEl.innerHTML = distritosHTML;
+                                                              });
+                                                              provinciaSelectEl.addEventListener("change", async (event) => {
+                                                                  const provinciaId = event.target.value;
+                                                                  const distritos = await obtenerDistritos(provinciaId);
+                                                                  let distritosHTML = "";
+                                                                  distritosHTML += "<option>Seleccionar Distrito</option>";
+                                                                  for (const distrito of distritos) {
+                                                                      distritosHTML += "<option value='" + distrito.id + "'>" + distrito.nombre + "</option>";
+                                                                  }
+                                                                  distritoSelectEl.innerHTML = distritosHTML;
+                                                              });
+                                                          })();
+                                                      </script>
+
+                                                      <div>
+                                                          <label for="editar-Direccion" class="col-form-label">Direccion</label>
+                                                          <input type="text" class="form-control" id="editar-Direccion" name="editarrDireccion" value="Av. Las Palmas km. 12 #456" placeholder="Editar Direccion" required>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                  <input  type="submit" name="accion" value="editar" class="btn btn-primary" />
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </div>
+                              <!---fin ventana para Editar --->
+
+                              <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#eliminarProvee">Eliminar</button>
+
+                              <!-- Ventana modal para eliminar -->
+                              <div class="modal fade" id="eliminarProvee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                          <form name="form-data" action="empleados" method="POST">
+                                              <div class="modal-header">
+                                                  <h5 class="modal-title" id="myModalLabel">Deseas eliminar al empleado</h5>
+                                                  <button type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                                              </div>
+
+                                              <div class="modal-body">
+                                                  <input type="hidden" name="idProveedor" value="${empleado.getCodigoEmpleado()}">
+                                                  <strong style="text-align: center !important">Juan</strong>
+                                              </div>
+
+                                              <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                  <button type="submit" class="btn btn-primary btnBorrar btn-block" data-bs-dismiss="modal" id="${empleado.getCodigoEmpleado()}" name="accion" value="eliminar">Eliminar</button>
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!---fin ventana eliminar--->
+                      </td>
+                      </tr>
               </c:forEach>
           </tbody>
       </table>
