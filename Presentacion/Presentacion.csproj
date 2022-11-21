@@ -128,7 +128,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Admin.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Producto.aspx" />
+    <Content Include="Productos.aspx" />
     <Content Include="Roles.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -206,12 +206,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Producto.aspx.cs">
-      <DependentUpon>Producto.aspx</DependentUpon>
+    <Compile Include="Productos.aspx.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Producto.aspx.designer.cs">
-      <DependentUpon>Producto.aspx</DependentUpon>
+    <Compile Include="Productos.aspx.designer.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles.aspx.cs">
