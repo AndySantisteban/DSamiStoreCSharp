@@ -39,12 +39,12 @@
                           </div>
 
                           <div>
-                              <label for="agregar-descripcion" class="col-form-label">Apellido Paterno</label>
+                              <label for="agregar-descripcion" class="col-form-label">Descripción</label>
                               <input type="text" class="form-control" id="agregar-descripcion" name="creardescripcion" placeholder="Agregar descripcion" required>
                           </div>
 
                           <div>
-                              <label for="agregar-precio" class="col-form-label">Apellido Materno</label>
+                              <label for="agregar-precio" class="col-form-label">Precio</label>
                               <input type="text" class="form-control" id="agregar-precio" name="crearPrecio" placeholder="Agregar precio" required>
                           </div>
 
