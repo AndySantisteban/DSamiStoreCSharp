@@ -21,7 +21,218 @@
                 </form>
             </div>
         </div>
+        <!-- Modal agregar inicio -->
 
+                    <div class="modal fade modal-lg" id="agregar" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form action="proveedores" method="POST" name="createProveedor"
+                            onsubmit="return validateFormCreate();">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Agregar proveedor</h5>
+                                <button type="button" class="btn-close p-2" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div id="alertCreate"></div>
+                            <div class="modal-body row">
+                                <div class="form-group col-md-6">
+                                    <div>
+                                        <label for="agregar-nombre" class="col-form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="agregar-nombre" name="crearNombre"
+                                            placeholder="Nombre(s)" required autofocus>
+                                    </div>
+
+                                    <div>
+                                        <label for="agregar-apellidoPaterno" class="col-form-label">Apellido
+                                            Paterno</label>
+                                        <input type="text" class="form-control" id="agregar-apellidoPaterno"
+                                            name="crearApellidoPaterno" placeholder="Apellido Paterno" required>
+                                    </div>
+
+                                    <div>
+                                        <label for="agregar-apellidoMaterno" class="col-form-label">Apellido
+                                            Materno</label>
+                                        <input type="text" class="form-control" id="agregar-apellidoMaterno"
+                                            name="crearApellidoMaterno" placeholder="Apellido Materno" required>
+                                    </div>
+
+                                    <div>
+                                        <label for="agregar-idTipoDocumento" class="col-form-label">Tipo de
+                                            documento</label>
+                                        <select class="form-select" id="agregar-idTipoDocumento" name="idTipoDocumento"
+                                            aria-label=".form-select-sm example">
+                                            <option selected value="">Seleccionar Tipo de documento</option>
+                                            <c:foreach var="documento" items="${documentos}">
+                                                <option value="${documento.getId()}">${documento.getNombre()}</option>
+                                            </c:foreach>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="agregar-numDocumento" class="col-form-label">Nº de documento</label>
+                                        <input type="number" class="form-control" id="agregar-numDocumento"
+                                            name="crearNumDocumento" placeholder="Agregar numero de documento" required
+                                            onkeypress="if(this.value.length==10) return false;">
+                                    </div>
+
+                                    <div>
+                                        <label for="agregar-fechaNac" class="col-form-label">Fecha de nacimiento</label>
+                                        <input type="date" class="form-control" id="agregar-fechaNac"
+                                            name="crearFechaNac" placeholder="Agregar fecha de nacimiento" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <div>
+                                        <label for="agregar-idEmpresa" class="col-form-label">Empresa</label>
+                                        <select class="form-select" id="agregar-idEmpresa" name="idEmpresa"
+                                            aria-label=".form-select-sm example">
+                                            <option selected value="">Seleccionar Empresa</option>
+                                            <c:foreach var="empresa" items="${empresas}">
+                                                <option value="${empresa.getIdEmpresa()}">${empresa.getRazonSocial()}
+                                                </option>
+                                            </c:foreach>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="agregar-idPais" class="col-form-label">Pais</label>
+                                        <select class="form-select" id="agregar-idPais" accion="idPais" name="idPais"
+                                            aria-label=".form-select-sm example">
+                                            <option selected>Seleccionar Pais</option>
+                                            <c:foreach var="pais" items="${paises}">
+                                                <option value="${pais.getId()}">${pais.getNombre()}</option>
+                                            </c:foreach>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="agregar-idRegion" class="col-form-label">Region</label>
+                                        <select class="form-select" id="agregar-idRegion" accion="idRegion"
+                                            name="idRegion" aria-label=".form-select-sm example">
+                                            <option selected>Seleccionar Region</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="agregar-idProvincia" class="col-form-label">Provincia</label>
+                                        <select class="form-select" id="agregar-idProvincia" accion="idProvincia"
+                                            name="idProvincia" aria-label=".form-select-sm example">
+                                            <option selected>Seleccionar Provincia</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="agregar-idDistrito" class="col-form-label">Distrito</label>
+                                        <select class="form-select" id="agregar-idDistrito" accion="idDistrito"
+                                            name="idDistrito" aria-label=".form-select-sm example">
+                                            <option selected>Seleccionar Distritos</option>
+                                        </select>
+                                    </div>
+
+                                    <script>
+                                        (() => {
+                                            const paisSelectEl = document.getElementById("agregar-idPais");
+                                            const regionSelectEl = document.getElementById("agregar-idRegion");
+                                            const provinciaSelectEl = document.getElementById("agregar-idProvincia");
+                                            const distritoSelectEl = document.getElementById("agregar-idDistrito");
+                                            async function obtenerRegiones(paisId) {
+                                                const res = await fetch("proveedores?accion=regiones&paisId=" + paisId);
+                                                const regiones = await res.json();
+                                                return regiones;
+                                            }
+                                            async function obtenerProvincias(regionId) {
+                                                const res = await fetch("proveedores?accion=provincias&regionId=" + regionId);
+                                                const provincias = await res.json();
+                                                return provincias;
+                                            }
+                                            async function obtenerDistritos(provinciaId) {
+                                                const res = await fetch("proveedores?accion=distritos&provinciaId=" + provinciaId);
+                                                const distritos = await res.json();
+                                                return distritos;
+                                            }
+                                            paisSelectEl.addEventListener("change", async (event) => {
+                                                const paisId = event.target.value;
+                                                const regiones = await obtenerRegiones(paisId);
+                                                let regionesHTML = "";
+                                                let provinciasHTML = "";
+                                                let distritosHTML = "";
+                                                regionesHTML += "<option value=''>Seleccionar Region</option>";
+                                                provinciasHTML += "<option value=''>Seleccionar Provincia</option>";
+                                                distritosHTML += "<option value=''>Seleccionar Distrito</option>";
+                                                for (const region of regiones) {
+                                                    regionesHTML += "<option value='" + region.id + "'>" + region.nombre + "</option>";
+                                                }
+                                                if (regiones.length > 0) {
+                                                    const regionId = regiones[0].id;
+                                                    const provincias = await obtenerProvincias(regionId);
+                                                    for (const provincia of provincias) {
+                                                        provinciasHTML += "<option value='" + provincia.id + "'>" + provincia.nombre + "</option>";
+                                                    }
+                                                    if (provincias.length > 0) {
+                                                        const provinciaId = provincias[0].id;
+                                                        const distritos = await obtenerDistritos(provinciaId);
+                                                        for (const distrito of distritos) {
+                                                            distritosHTML += "<option value='" + distrito.id + "'>" + distrito.nombre + "</option>";
+                                                        }
+                                                    }
+                                                }
+                                                regionSelectEl.innerHTML = regionesHTML;
+                                                provinciaSelectEl.innerHTML = provinciasHTML;
+                                                distritoSelectEl.innerHTML = distritosHTML;
+                                            });
+                                            regionSelectEl.addEventListener("change", async (event) => {
+                                                const regionId = event.target.value;
+                                                const provincias = await obtenerProvincias(regionId);
+                                                let provinciasHTML = "";
+                                                let distritosHTML = "";
+                                                provinciasHTML += "<option value=''>Seleccionar Provincia</option>";
+                                                distritosHTML += "<option value=''>Seleccionar Distrito</option>";
+                                                for (const provincia of provincias) {
+                                                    provinciasHTML += "<option value='" + provincia.id + "'>" + provincia.nombre + "</option>";
+                                                }
+                                                if (provincias.length > 0) {
+                                                    const provinciaId = provincias[0].id;
+                                                    const distritos = await obtenerDistritos(provinciaId);
+                                                    for (const distrito of distritos) {
+                                                        distritosHTML += "<option value='" + distrito.id + "'>" + distrito.nombre + "</option>";
+                                                    }
+                                                }
+                                                provinciaSelectEl.innerHTML = provinciasHTML;
+                                                distritoSelectEl.innerHTML = distritosHTML;
+                                            });
+                                            provinciaSelectEl.addEventListener("change", async (event) => {
+                                                const provinciaId = event.target.value;
+                                                const distritos = await obtenerDistritos(provinciaId);
+                                                let distritosHTML = "";
+                                                distritosHTML += "<option value=''>Seleccionar Distrito</option>";
+                                                for (const distrito of distritos) {
+                                                    distritosHTML += "<option value='" + distrito.id + "'>" + distrito.nombre + "</option>";
+                                                }
+                                                distritoSelectEl.innerHTML = distritosHTML;
+                                            });
+                                        })();
+                                    </script>
+
+                                    <div>
+                                        <label for="agregar-Direccion" class="col-form-label">Direccion</label>
+                                        <input type="text" class="form-control" id="agregar-Direccion"
+                                            name="crearDireccion" placeholder="Agregar Direccion" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <input type="submit" class="btn btn-primary" name="accion" value="agregar" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <!-- Modal agregar fin -->
         
         <!-- Mostrar tabla -->
         <div class="card">
@@ -41,10 +252,10 @@
                         <c:foreach var="proveedor" items="${proveedores}" varstatus="loop">
                             <tr>
                                 <td>1</td>
-                                <td>Sam</td>
-                                <td>75448908</td>
-                                <td>Razón social</td>
-                                <td>San juan 123</td>
+                                <td>Santiago</td>
+                                <td>95348865</td>
+                                <td>Suministra de limpieza Max</td>
+                                <td>Avenida Santa Clara cuadra 22 #546</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <button class="btn btn-secondary me-2" type="button" data-bs-toggle="modal"
@@ -52,6 +263,39 @@
                                             Editar</button>
 
                                         <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#eliminarProveedor">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>2</td>
+                                <td>Hector</td>
+                                <td>65348865</td>
+                                <td>Limpieza es Salud</td>
+                                <td>Avenida Santa Clara cuadra 22 #546</td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="btn btn-secondary me-2" type="button" data-bs-toggle="modal"
+                                            data-bs-target="#editarProveedor">
+                                            Editar</button>
+
+                                        <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#eliminarProveedor">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>3</td>
+                                <td>Sofia</td>
+                                <td>85348865</td>
+                                <td>Limpieza Todo BigStore</td>
+                                <td>Avenida Santa Clara cuadra 22 #546</td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="btn btn-secondary me-2" type="button" data-bs-toggle="modal"
+                                            data-bs-target="#editarProveedor">
+                                            Editar</button>
+
+                                        <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#eliminarProveedor">Eliminar</button>
+                                    </div>
                                 </td>
                             </tr>
                         </c:foreach>
