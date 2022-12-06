@@ -13,5 +13,7 @@ namespace Presentacion
 
     public partial class Usuarios
     {
+        public global::System.Web.UI.WebControls.Label NombreUsuarioLabel;
+
     }
 }
