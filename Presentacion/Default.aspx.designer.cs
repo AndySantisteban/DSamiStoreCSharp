@@ -13,5 +13,8 @@ namespace Presentacion
 
     public partial class Default
     {
+        public global::System.Web.UI.WebControls.Label lbMsg;
+        public global::System.Web.UI.WebControls.TextBox tbUsername;
+        public global::System.Web.UI.WebControls.TextBox tbPassword;
     }
 }

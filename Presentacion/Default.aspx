@@ -7,21 +7,22 @@
         </div>
     </div>
     <div class="container">
-        <form class="card mt-5 mx-auto" style="max-width: 512px;" action="/usuarios" method="POST">
+        <form runat="server" class="card mt-5 mx-auto" style="max-width: 512px;"  method="POST">
             <div class="card-body">
                 <div class="mt-3 mb-3">
                     <h1 class="h4 fw-bold text-center">Inicio de sesión</h1>
                 </div>
                 <div class="mb-3">
-                    <label for="username" class="form-label">Nombre de usuario</label>
-                    <input class="form-control" id="username" name="nombreUsuario" placeholder="Ingresa nombre de usario" required>
+                    <asp:Label ID="Label2" runat="server" Text="Nombre de usuario" AssociatedControlId="tbUsername" CssClass="form-label"></asp:Label>
+                    <asp:TextBox ID="tbUsername" runat="server" CssClass="form-control" placeholder="Ingresar nombre de usuario"></asp:TextBox>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Clave</label>
-                    <input type="password" id="password" name="clave" class="form-control" placeholder="Ingresar clave" required>
-                </div>
+                    <asp:Label ID="Label1" runat="server" Text="Clave" AssociatedControlId="tbPassword" CssClass="form-label"></asp:Label>
+                    <asp:TextBox ID="tbPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Ingresar clave"></asp:TextBox>
+                </div>   
+                <asp:Label ID="lbMsg" runat="server" Text=""></asp:Label>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Acceder</button>
+                    <asp:Button ID="Button1" runat="server" Text="Acceder" CssClass="btn btn-primary" OnClick="BtnCreate_Click" />
                 </div>
             </div>
         </form>

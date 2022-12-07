@@ -21,6 +21,29 @@
             </div>
         </div>
 
+        <div class="card">
+            <div class="table-responsive">
+                <asp:Table id="Table1" runat="server" CssClass="table table-borderless">
+                    <asp:TableHeaderRow>
+                        <asp:TableHeaderCell>
+                            N
+                        </asp:TableHeaderCell>
+                        <asp:TableHeaderCell>
+                            Nombre de usuario
+                        </asp:TableHeaderCell>
+                        <asp:TableHeaderCell>
+                            Empleado
+                        </asp:TableHeaderCell>
+                        <asp:TableHeaderCell>
+                            Rol
+                        </asp:TableHeaderCell>
+                        <asp:TableHeaderCell CssClass="text-center">
+                            Acciones
+                        </asp:TableHeaderCell>
+                    </asp:TableHeaderRow>
+                </asp:Table>
+            </div>
+        </div>
         <!-- Modal para Agregar-->
         <div class="modal fade" id="agregar-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
