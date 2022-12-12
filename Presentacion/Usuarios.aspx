@@ -5,7 +5,6 @@
         <div class="py-4 bd-highlight row">
             <div class="title-proveedores py-2">
                 <h2>Usuarios</h2>
-                <asp:Label ID="NombreUsuarioLabel" runat="server" Text="Label"></asp:Label>
             </div>
             <div class="d-flex justify-content-between align-items-center">
                 <div>

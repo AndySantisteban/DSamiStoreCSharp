@@ -16,10 +16,6 @@ namespace Presentacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usuario = usuarioNegocio.Ingresar("jose", "jose");
-
-            NombreUsuarioLabel.Text = usuario.ApellidoEmpleado;
-
             List<Usuario> usuarios = usuarioNegocio.ObtenerUsuarios("", 1, 5);
 
             for (int i = 0; i < usuarios.Count; i++)

@@ -39,7 +39,7 @@ namespace Presentacion
             {
                 Usuario usuario = usuarioNegocio.Ingresar(username, password);
 
-                lbMsg.Text = "Bienvenido: " + username;
+                Response.Redirect("/usuarios");
 
             }
             catch (Exception ex)
