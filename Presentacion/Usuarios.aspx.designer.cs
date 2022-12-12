@@ -13,7 +13,9 @@ namespace Presentacion
 
     public partial class Usuarios
     {
-        public global::System.Web.UI.WebControls.Table Table1;
+        public global::System.Web.UI.WebControls.GridView GridView1;
+        public global::System.Web.UI.WebControls.Label flbCodigo;
+        public global::System.Web.UI.WebControls.Label flbNombreUsuario;
 
     }
 }

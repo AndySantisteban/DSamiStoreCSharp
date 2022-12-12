@@ -2,8 +2,8 @@
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -18,32 +18,44 @@ namespace Presentacion
         {
             List<Usuario> usuarios = usuarioNegocio.ObtenerUsuarios("", 1, 5);
 
-            for (int i = 0; i < usuarios.Count; i++)
+            if (!IsPostBack)
             {
-                TableRow tr = new TableRow();
+                DataTable dt = new DataTable();
+                dt.Columns.AddRange(new DataColumn[] {
+                    new DataColumn("Codigo"),
+                    new DataColumn("NombreUsuario"),
+                    new DataColumn("Empleado"),
+                    new DataColumn("Rol")
+                });
 
-                TableCell td = new TableCell();
-                TableCell td1 = new TableCell();
-                TableCell td2 = new TableCell();
-                TableCell td3 = new TableCell();
-                TableCell td4 = new TableCell();
-
-                td.Text = (i + 1) + "";
-                td1.Text = usuarios[i].NombreUsuario;
-                td2.Text = usuarios[i].NombreEmpleado + " " + usuarios[i].ApellidoEmpleado;
-                td3.Text = usuarios[i].NombreRol;
-                td4.Text = "";
-
-                tr.Cells.Add(td);
-                tr.Cells.Add(td1);
-                tr.Cells.Add(td2);
-                tr.Cells.Add(td3);
-                tr.Cells.Add(td4);
-
-                Table1.Rows.Add(tr);
+                for (int i = 0; i < usuarios.Count; i++)
+                {
+                    dt.Rows.Add(usuarios[i].Codigo, usuarios[i].NombreUsuario, usuarios[i].NombreEmpleado + " " + usuarios[i].ApellidoEmpleado, usuarios[i].NombreRol);
+                }
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
             }
 
+        }
 
+        protected void Display(object sender, EventArgs e)
+{
+            int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+
+            GridViewRow row = GridView1.Rows[rowIndex];
+
+            string codigo = (row.FindControl("tlbCodigo") as Label).Text;
+
+            Usuario usuario = usuarioNegocio.ObtenerUsuarioPorCodigo(codigo);
+
+            flbCodigo.Text = usuario.Codigo;
+            flbNombreUsuario.Text = usuario.NombreUsuario;
+            ClientScript.RegisterStartupScript(this.GetType(),"Pop","openModal();",true);
+}
+ 
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            //Your Saving code.
         }
     }
 }

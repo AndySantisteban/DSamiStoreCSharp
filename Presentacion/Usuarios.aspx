@@ -20,29 +20,84 @@
             </div>
         </div>
 
-        <div class="card">
-            <div class="table-responsive">
-                <asp:Table id="Table1" runat="server" CssClass="table table-borderless">
-                    <asp:TableHeaderRow>
-                        <asp:TableHeaderCell>
-                            N
-                        </asp:TableHeaderCell>
-                        <asp:TableHeaderCell>
-                            Nombre de usuario
-                        </asp:TableHeaderCell>
-                        <asp:TableHeaderCell>
-                            Empleado
-                        </asp:TableHeaderCell>
-                        <asp:TableHeaderCell>
-                            Rol
-                        </asp:TableHeaderCell>
-                        <asp:TableHeaderCell CssClass="text-center">
-                            Acciones
-                        </asp:TableHeaderCell>
-                    </asp:TableHeaderRow>
-                </asp:Table>
+         <form id="form1" runat="server">
+            <div class="card">
+                <div class="table-responsive">
+                    <asp:GridView ID="GridView1" runat="server" CssClass="table table-borderless"
+                        DataKeyNames="Codigo" AutoGenerateColumns="false" GridLines="None">
+                        <Columns>
+                            <asp:TemplateField HeaderText="Código">
+                                <ItemTemplate>
+                                    <asp:Label ID="tlbCodigo" runat="server" Text='<%# Eval("Codigo") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Nombre de usuario">
+                                <ItemTemplate>
+                                    <asp:Label ID="tlbNombreUsuario" runat="server" Text='<%# Eval("NombreUsuario") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Empleado">
+                                <ItemTemplate>
+                                    <asp:Label ID="tlbEmpleado" runat="server" Text='<%# Eval("Empleado") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Rol">
+                                <ItemTemplate>
+                                    <asp:Label ID="tlbRol" runat="server" Text='<%# Eval("Rol") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Acciones">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="tBtnEdit" runat="server" Text="Editar" OnClick="Display" CssClass="btn btn-secondary me-2"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
             </div>
+        <div>
+    </div>
+    <div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar usuario</h5>
+                        <button type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Código:</label>
+                            <asp:TextBox ID="flbCodigo" runat="server" Text="" CssClass="form-control" placeholder="Ingregar código"></asp:TextBox>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre de usuario:</label>
+                            <asp:TextBox ID="flbNombreUsuario" runat="server" Text="" CssClass="form-control" placeholder="Ingregar nombre de usuario"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <asp:Button ID="btnSave" runat="server" Text="Aceptar" OnClick="btnSave_Click" CssClass="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+            <script type='text/javascript'>
+                function openModal() {
+                    const myModal = new bootstrap.Modal(document.getElementById("myModal"), {});
+
+                    myModal.show();
+                } 
+            </script>
         </div>
+    </div>
+    </form>
+
         <!-- Modal para Agregar-->
         <div class="modal fade" id="agregar-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
