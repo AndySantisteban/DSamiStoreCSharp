@@ -1,11 +1,6 @@
 ﻿using Entidades;
 using Negocio;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Presentacion
 {
@@ -28,7 +23,7 @@ namespace Presentacion
                 lbMsg.Text = "Nombre de usuairo es requerido";
                 return;
             }
-            
+
             if (password == "")
             {
                 lbMsg.Text = "Clave es requerido";

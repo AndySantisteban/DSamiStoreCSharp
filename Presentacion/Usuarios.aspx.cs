@@ -3,9 +3,6 @@ using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Presentacion
@@ -39,7 +36,7 @@ namespace Presentacion
         }
 
         protected void Display(object sender, EventArgs e)
-{
+        {
             int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
 
             GridViewRow row = GridView1.Rows[rowIndex];
@@ -50,9 +47,9 @@ namespace Presentacion
 
             flbCodigo.Text = usuario.Codigo;
             flbNombreUsuario.Text = usuario.NombreUsuario;
-            ClientScript.RegisterStartupScript(this.GetType(),"Pop","openModal();",true);
-}
- 
+            ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openModal();", true);
+        }
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
             //Your Saving code.
