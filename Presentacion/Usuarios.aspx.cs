@@ -19,7 +19,7 @@ namespace Presentacion
         private string consulta = "";
         private int pagina = 1;
         private int totalPagina = 1;
-        private int limite = 5;
+        private int limite = 50;
 
         protected void Page_Load(object sender, EventArgs e)
         {
