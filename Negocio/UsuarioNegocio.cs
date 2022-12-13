@@ -38,12 +38,13 @@ namespace Negocio
 
         public void ActualizarUsuario(string codigo, string nombreUsuario, string clave, string codigoRol)
         {
-            Usuario usuario = usuarioDato.EncontrarUsuarioPorCodigo(nombreUsuario);
+            Usuario usuario = usuarioDato.EncontrarUsuarioPorCodigo(codigo);
 
             if (usuario == null)
             {
                 throw new Exception("Usuario no existe");
             }
+
 
             if (usuario.NombreUsuario == nombreUsuario)
             {

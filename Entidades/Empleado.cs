@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class Empleado: Persona
+    public class Empleado: Persona
     {
         public string CodigoEmpleado { get; set; }
         public string Direccion { get; set; }
@@ -15,5 +15,6 @@ namespace Entidades
         public string CodigoRegion { get; set; }
         public string CodigoDistrito { get; set; }
         public string CodigoProvincia { get; set; }
+        public string CodigoPais { get; set; }
     }
 }

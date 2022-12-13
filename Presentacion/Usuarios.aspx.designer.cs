@@ -13,9 +13,27 @@ namespace Presentacion
 
     public partial class Usuarios
     {
-        public global::System.Web.UI.WebControls.GridView GridView1;
-        public global::System.Web.UI.WebControls.Label flbCodigo;
-        public global::System.Web.UI.WebControls.Label flbNombreUsuario;
 
+        public global::System.Web.UI.WebControls.GridView GridViewTable;
+
+        public global::System.Web.UI.WebControls.TextBox TbBuscar;
+
+        public global::System.Web.UI.WebControls.TextBox TbNombreUsuarioSave;
+        public global::System.Web.UI.WebControls.TextBox TbClaveSave;
+
+        public global::System.Web.UI.WebControls.TextBox TbCodigoUpdate;
+        public global::System.Web.UI.WebControls.TextBox TbNombreUsuarioUpdate;
+        public global::System.Web.UI.WebControls.TextBox TbClaveUpdate;
+
+        public global::System.Web.UI.WebControls.TextBox TbCodigoDelete;
+        public global::System.Web.UI.WebControls.Label LbNombreUsuarioDelete;
+
+        public global::System.Web.UI.WebControls.DropDownList DropDownRolSave;
+        public global::System.Web.UI.WebControls.DropDownList DropDownEmpleadoSave;
+
+        public global::System.Web.UI.WebControls.DropDownList DropDownRolUpdate;
+
+        public global::System.Web.UI.WebControls.DropDownList DropDownLimite;
+        public global::System.Web.UI.WebControls.DropDownList DropDownPagina;
     }
 }

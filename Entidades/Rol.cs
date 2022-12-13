@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class Rol
+    public class Rol
     {
         public string Codigo { get; set; }
         public string Nombre { get; set; }
