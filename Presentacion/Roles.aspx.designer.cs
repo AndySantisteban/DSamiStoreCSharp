@@ -13,5 +13,20 @@ namespace Presentacion
 
     public partial class Roles
     {
+        public global::System.Web.UI.WebControls.GridView GridViewTable;
+
+        public global::System.Web.UI.WebControls.TextBox TbBuscar;
+
+        public global::System.Web.UI.WebControls.TextBox TbNombreSave;
+
+        public global::System.Web.UI.WebControls.TextBox TbCodigoUpdate;
+        public global::System.Web.UI.WebControls.TextBox TbNombreUpdate;
+
+        public global::System.Web.UI.WebControls.TextBox TbCodigoDelete;
+        public global::System.Web.UI.WebControls.Label LbNombreDelete;
+
+
+        public global::System.Web.UI.WebControls.DropDownList DropDownLimite;
+        public global::System.Web.UI.WebControls.DropDownList DropDownPagina;
     }
 }

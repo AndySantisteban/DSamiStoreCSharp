@@ -159,7 +159,7 @@
                             <button type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <asp:TextBox ID="TbCodigoDelete" runat="server" Text="" CssClass="d-none" placeholder="Ingregar código" disabled="true"></asp:TextBox>
+                            <asp:TextBox ID="TbCodigoDelete" runat="server" Text="" CssClass="d-none" placeholder="Ingregar código" ReadOnly="true"></asp:TextBox>
                             <asp:Label ID="LbNombreUsuarioDelete" runat="server" Text="" Style="text-align: center !important"></asp:Label>
                         </div>
                         <div class="modal-footer">
