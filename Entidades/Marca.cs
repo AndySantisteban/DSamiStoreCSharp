@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class Marca
+    public class Marca
     {
         public string Codigo { get; set; }
         public string Nombre { get; set; }

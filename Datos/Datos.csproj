@@ -42,10 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlmacenDato.cs" />
     <Compile Include="CategoriaDato.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="EmpleadoDato.cs" />
+    <Compile Include="ImagenDato.cs" />
+    <Compile Include="MarcaDato.cs" />
+    <Compile Include="MonedaDato.cs" />
+    <Compile Include="ProductoDato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolDato.cs" />
     <Compile Include="UsuarioDato.cs" />

@@ -79,7 +79,12 @@ namespace Negocio
             Categoria categoria = CategoriaD.EncontrarCategoriaPorCodigo(codigo);
             return categoria;
         }
+        public List<Categoria> ConsultarCategorias()
+        {
+            List<Categoria> categorias = CategoriaD.ConsultarCategoria();
 
+            return categorias;
+        }
 
 
 

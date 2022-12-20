@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class Moneda
+    public class Moneda
     {
         public string Codigo { get; set; }
         public string Nombre { get; set; }
